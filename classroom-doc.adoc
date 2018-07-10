@@ -68,17 +68,17 @@ v1.0 2018-07-06
         "id": 16,
         "name": "chenjq", //用户姓名
         "phone": "18310022931", //手机号码
-        "headImage": "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1461547269,2212657881&fm=27&gp=0.jpg", //头像url地址
+        "headImage": "https://img.xxbmm.com/0.jpg", //头像url地址
         "flower": 52, //小红花数量
-        "openId": "sadsalk1@ewq!!dsa", //openId
-        "unionId": "aabbbcc", //unionId
+        "openId": "oPmunjkl72XsCZqFeowXoYqyGVOo", //openId
+        "unionId": "oe3vZwEmfXUtr2BzcOSRfoZLc9Og", //unionId
         "status": 0, //冻结状态,0-正常，1-冻结
         "createTime": 1530773758000 //添加时间
     }
 }
 ----
 === 用户红花接口
-==== 小红花记录分页查询
+==== 红花记录分页查询
 [cols="3", options="header"]
 |===
 |URL|HTTP请求方式|返回格式
@@ -169,6 +169,79 @@ v1.0 2018-07-06
 |`objectId`|`Integer`|`false`|关联ID
 |`friendUserId`|`Integer`|`false`|好友ID
 |`flower`|`Integer`|`false`|小红花数量
+|===
+****
+.返回参数
+[source,JSON]
+----
+{
+    "success": true,
+    "msg": "成功",
+    "code": 0,
+    "nowDate": 1530773758000,
+    "data": null
+}
+----
+
+=== 兑换课程接口
+==== 已兑换课程分页查询
+[cols="3", options="header"]
+|===
+|URL|HTTP请求方式|返回格式
+|`/user/consume/page`|`GET`|`JSON`
+|===
+.请求参数
+****
+[cols="4", options="header"]
+|===
+|参数|类型|必填|说明
+|`userId`|`Integer`|`true`|用户编号
+|`page`|`Integer`|`true`|当前页
+|`pageSize`|`Integer`|`true`|每页数量
+|===
+****
+WARNING: **//TODO 待定**
+
+.返回参数
+[source,JSON]
+----
+{
+    "success": true,
+    "msg": "成功",
+    "code": 0,
+    "nowDate": 1530773758000,
+    "data": {
+        "list": [
+            {
+              "id": 5,
+              "userId": 16,
+              "subjectId": 1,
+              "createTime": 1531207506000
+            }
+        ],
+        "pageNum": 1,
+        "pageSize": 2,
+        "size": 2,
+        "pages": 1,
+        "total": 2,
+        "hasNextPage": false
+    }
+}
+----
+
+==== 兑换课程
+[cols="3", options="header"]
+|===
+|URL|HTTP请求方式|返回格式
+|`/user/consume/`|`POST`|`JSON`
+|===
+.请求参数
+****
+[cols="4", options="header"]
+|===
+|参数|类型|必填|说明
+|`userId`|`Integer`|`true`|用户编号
+|`subjectId`|`Integer`|`false`|课程ID
 |===
 ****
 .返回参数
