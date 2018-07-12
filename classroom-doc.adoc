@@ -221,8 +221,8 @@ v1.0 2018-07-06
     "nowDate": 1530773758000,
     "data": {
         "list": [
-          {
-              "subject": {
+            {
+              "subject": {  //课程信息
                   "id": 1,
                   "title": "秃顶是怎样练成的",  //课程主题
                   "author": 1,  //作者id
@@ -237,7 +237,7 @@ v1.0 2018-07-06
                   "flower": 1,  //小红花数量
                   "content": "这是一段测试内容" //内容描述
               },
-              "author": {
+              "author": {   //作者信息
                   "id": 1,
                   "name": "宋大善人", //名称
                   "headImage": "http://www.badiu.com.jpeg?seaerch=niudehua",  //头像url地址
@@ -245,7 +245,18 @@ v1.0 2018-07-06
                   "socialTitle": "",  //社会头衔
                   "sex": 1  //性别，0-男，1-女
               },
-              "videosList": [
+              "videosList": [ //视频列表
+                  {
+                      "id": 39,
+                      "subjectId": 1, //课程id
+                      "videoName": "测试保存视频",  //视频名称
+                      "videoUrl": "保存视频url",  //视频url
+                      "timeLength": "111",  //视频时长
+                      "experience": 0,  //是否为试看视频，0-非是看，1-试看
+                      "sort": 1 //排序
+                  }
+              ],
+              "videosList": [   //视频列表
                   {
                       "id": 39,
                       "subjectId": 1, //课程id
@@ -324,7 +335,7 @@ v1.0 2018-07-06
     "data": {
         "list": [
           {
-              "subject": {
+              "subject": {  //课程信息
                   "id": 1,
                   "title": "秃顶是怎样练成的",  //课程主题
                   "author": 1,  //作者id
@@ -339,7 +350,7 @@ v1.0 2018-07-06
                   "flower": 1,  //小红花数量
                   "content": "这是一段测试内容" //内容描述
               },
-              "author": {
+              "author": {   //作者信息
                   "id": 1,
                   "name": "宋大善人", //名称
                   "headImage": "http://www.badiu.com.jpeg?seaerch=niudehua",  //头像url地址
@@ -347,7 +358,7 @@ v1.0 2018-07-06
                   "socialTitle": "",  //社会头衔
                   "sex": 1  //性别，0-男，1-女
               },
-              "videosList": [
+              "videosList": [ //视频列表
                   {
                       "id": 39,
                       "subjectId": 1, //课程id
@@ -358,7 +369,7 @@ v1.0 2018-07-06
                       "sort": 1 //排序
                   }
               ],
-              "vo": {
+              "vo": { //拼团信息
                   "id": 3,
                   "subjectId": 2, //课程id
                   "shareNum": 3,  //需要拼团人数
