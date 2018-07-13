@@ -51,42 +51,6 @@ v1.0 2018-07-06
 
 == 用户
 === 用户接口
-==== 查询用户信息
-[cols="3", options="header"]
-|===
-|URL|HTTP请求方式|返回格式
-|`/user/{id}`|`GET`|`JSON`
-|===
-.请求参数
-****
-[cols="4", options="header"]
-|===
-|参数|类型|必填|说明
-|`id(path)`|`Integer`|`true`|用户编号
-|===
-****
-.返回参数
-[source,JSON]
-----
-{
-    "success": true,
-    "msg": "成功",
-    "code": 0,
-    "nowDate": 1531127611915,
-    "ver": 0,
-    "data": {
-        "id": 16,
-        "name": "chenjq", //用户姓名
-        "phone": "18310022931", //手机号码
-        "headImage": "https://img.xxbmm.com/0.jpg", //头像url地址
-        "flower": 52, //小红花数量
-        "openId": "oPmunjkl72XsCZqFeowXoYqyGVOo", //openId
-        "unionId": "oe3vZwEmfXUtr2BzcOSRfoZLc9Og", //unionId
-        "status": 0, //冻结状态,0-正常，1-冻结
-        "createTime": 1530773758000 //添加时间
-    }
-}
-----
 === 用户红花接口
 ==== 红花记录分页查询
 [cols="3", options="header"]
@@ -99,7 +63,6 @@ v1.0 2018-07-06
 [cols="4", options="header"]
 |===
 |参数|类型|必填|说明
-|`userId`|`Integer`|`true`|用户编号
 |`page`|`Integer`|`true`|当前页
 |`pageSize`|`Integer`|`true`|每页数量
 |===
@@ -116,15 +79,15 @@ v1.0 2018-07-06
         "list": [
             {
               "id": 3 ,
-              "userId": 16 ,  //用户编号
-              "type": 1 , //类型值
-              "objectId": 123 , //关联编号
-              "friendUserId": 123 , //好友编号
-              "description": "兑换课程,减少100积分，用户Id:{16},关联ID:{123}" , //记录描述
-              "flower": 100 , //小红花数量
-              "createTime": 1530773758000 , //添加时间
-              "typeName": "课程兑换" , //类型名称
-              "directionIcon": "-"  //扣减方向符号 +、-
+              "userId": 16 ,                            //用户编号
+              "type": 1 ,                               //类型值
+              "objectId": 123 ,                         //关联编号
+              "friendUserId": 123 ,                     //好友编号
+              "description": "兑换课程,减少100积分，用户Id:{16},关联ID:{123}" ,      //记录描述
+              "flower": 100 ,                           //小红花数量
+              "createTime": 1530773758000 ,             //添加时间
+              "typeName": "课程兑换" ,                   //类型名称
+              "directionIcon": "-"                      //扣减方向符号 +、-
             }
         ],
         "pageNum": 1,
@@ -147,7 +110,6 @@ v1.0 2018-07-06
 [cols="4", options="header"]
 |===
 |参数|类型|必填|说明
-|`userId`|`Integer`|`true`|用户编号
 |===
 ****
 .返回参数
@@ -158,7 +120,7 @@ v1.0 2018-07-06
     "msg": "成功",
     "code": 0,
     "nowDate": 1530773758000,
-    "data": true  //签到状态 true、false
+    "data": true                      //签到状态 true、false
 }
 ----
 
@@ -173,7 +135,6 @@ v1.0 2018-07-06
 [cols="4", options="header"]
 |===
 |参数|类型|必填|说明
-|`userId`|`Integer`|`true`|用户编号
 |`type`|`Integer`|`true`|记录类型 详细请阅读<<flowerType>>
 |`objectId`|`Integer`|`false`|关联ID
 |`friendUserId`|`Integer`|`false`|好友ID
@@ -193,7 +154,7 @@ v1.0 2018-07-06
 ----
 
 === 兑换课程接口
-==== 已兑换课程分页查询
+==== 已兑换课程
 [cols="3", options="header"]
 |===
 |URL|HTTP请求方式|返回格式
@@ -204,7 +165,6 @@ v1.0 2018-07-06
 [cols="4", options="header"]
 |===
 |参数|类型|必填|说明
-|`userId`|`Integer`|`true`|用户编号
 |`page`|`Integer`|`true`|当前页
 |`pageSize`|`Integer`|`true`|每页数量
 |===
@@ -224,47 +184,36 @@ v1.0 2018-07-06
             {
               "subject": {  //课程信息
                   "id": 1,
-                  "title": "秃顶是怎样练成的",  //课程主题
-                  "author": 1,  //作者id
-                  "description": "程序员秃顶之路", //课程介绍
-                  "banner": "http://www.banner.com", //课程banner，存储url
-                  "type": 1,  //观看途径：0，免费，1，兑换，2，组团
-                  "completed": 1, //连载状态 0:完成 1：连载中  单集视频默认0
-                  "objectType": 1,  //对象属性：0，视频，1，音频
-                  "upDownStatus": 1,  //上下架状态 0:上架 1:下架
-                  "videoType": 1, //视频属性：0，单集，1，多集
-                  "categoryId": null, //主题分类id
-                  "flower": 1,  //小红花数量
-                  "content": "这是一段测试内容" //内容描述
+                  "title": "秃顶是怎样练成的",             //课程主题
+                  "author": 1,                            //作者id
+                  "description": "程序员秃顶之路",         //课程介绍
+                  "banner": "http://www.banner.com",      //课程banner，存储url
+                  "type": 1,                              //观看途径：0，免费，1，兑换，2，组团
+                  "completed": 1,                         //连载状态 0:完成 1：连载中  单集视频默认0
+                  "objectType": 1,                        //对象属性：0，视频，1，音频
+                  "upDownStatus": 1,                      //上下架状态 0:上架 1:下架
+                  "videoType": 1,                         //视频属性：0，单集，1，多集
+                  "categoryId": null,                     //主题分类id
+                  "flower": 1,                            //小红花数量
+                  "content": "这是一段测试内容"            //内容描述
               },
-              "author": {   //作者信息
+              "author": {                                 //作者信息
                   "id": 1,
-                  "name": "宋大善人", //名称
-                  "headImage": "http://www.badiu.com.jpeg?seaerch=niudehua",  //头像url地址
-                  "description": "不知名明星", //作者介绍
-                  "socialTitle": "",  //社会头衔
-                  "sex": 1  //性别，0-男，1-女
+                  "name": "宋大善人",                     //名称
+                  "headImage": "http://www.badiu.com.jpeg",  //头像url地址
+                  "description": "不知名明星",             //作者介绍
+                  "socialTitle": "",                      //社会头衔
+                  "sex": 1                                //性别，0-男，1-女
               },
-              "videosList": [ //视频列表
+              "videosList": [                             //视频列表
                   {
                       "id": 39,
-                      "subjectId": 1, //课程id
-                      "videoName": "测试保存视频",  //视频名称
-                      "videoUrl": "保存视频url",  //视频url
-                      "timeLength": "111",  //视频时长
-                      "experience": 0,  //是否为试看视频，0-非是看，1-试看
-                      "sort": 1 //排序
-                  }
-              ],
-              "videosList": [   //视频列表
-                  {
-                      "id": 39,
-                      "subjectId": 1, //课程id
-                      "videoName": "测试保存视频",  //视频名称
-                      "videoUrl": "保存视频url",  //视频url
-                      "timeLength": "111",  //视频时长
-                      "experience": 0,  //是否为试看视频，0-非是看，1-试看
-                      "sort": 1 //排序
+                      "subjectId": 1,                     //课程id
+                      "videoName": "测试保存视频",         //视频名称
+                      "videoUrl": "保存视频url",           //视频url
+                      "timeLength": "111",                //视频时长
+                      "experience": 0,                    //是否为试看视频，0-非是看，1-试看
+                      "sort": 1                           //排序
                   }
               ]
           }
@@ -289,7 +238,6 @@ v1.0 2018-07-06
 [cols="4", options="header"]
 |===
 |参数|类型|必填|说明
-|`userId`|`Integer`|`true`|用户编号
 |`subjectId`|`Integer`|`true`|课程ID
 |===
 ****
@@ -306,7 +254,7 @@ v1.0 2018-07-06
 ----
 
 === 组团课程接口
-==== 组团中的课程分页查询
+==== 组团中的课程
 [cols="3", options="header"]
 |===
 |URL|HTTP请求方式|返回格式
@@ -317,7 +265,6 @@ v1.0 2018-07-06
 [cols="4", options="header"]
 |===
 |参数|类型|必填|说明
-|`userId`|`Integer`|`true`|用户编号
 |`page`|`Integer`|`true`|当前页
 |`pageSize`|`Integer`|`true`|每页数量
 |===
@@ -337,45 +284,45 @@ v1.0 2018-07-06
           {
               "subject": {  //课程信息
                   "id": 1,
-                  "title": "秃顶是怎样练成的",  //课程主题
-                  "author": 1,  //作者id
-                  "description": "程序员秃顶之路", //课程介绍
-                  "banner": "http://www.banner.com", //课程banner，存储url
-                  "type": 1,  //观看途径：0，免费，1，兑换，2，组团
-                  "completed": 1, //连载状态 0:完成 1：连载中  单集视频默认0
-                  "objectType": 1,  //对象属性：0，视频，1，音频
-                  "upDownStatus": 1,  //上下架状态 0:上架 1:下架
-                  "videoType": 1, //视频属性：0，单集，1，多集
-                  "categoryId": null, //主题分类id
-                  "flower": 1,  //小红花数量
-                  "content": "这是一段测试内容" //内容描述
+                  "title": "秃顶是怎样练成的",             //课程主题
+                  "author": 1,                            //作者id
+                  "description": "程序员秃顶之路",         //课程介绍
+                  "banner": "http://www.banner.com",      //课程banner，存储url
+                  "type": 1,                              //观看途径：0，免费，1，兑换，2，组团
+                  "completed": 1,                         //连载状态 0:完成 1：连载中  单集视频默认0
+                  "objectType": 1,                        //对象属性：0，视频，1，音频
+                  "upDownStatus": 1,                      //上下架状态 0:上架 1:下架
+                  "videoType": 1,                         //视频属性：0，单集，1，多集
+                  "categoryId": null,                     //主题分类id
+                  "flower": 1,                            //小红花数量
+                  "content": "这是一段测试内容"            //内容描述
               },
-              "author": {   //作者信息
+              "author": {                                 //作者信息
                   "id": 1,
-                  "name": "宋大善人", //名称
-                  "headImage": "http://www.badiu.com.jpeg?seaerch=niudehua",  //头像url地址
-                  "description": "不知名明星", //作者介绍
-                  "socialTitle": "",  //社会头衔
-                  "sex": 1  //性别，0-男，1-女
+                  "name": "宋大善人",                     //名称
+                  "headImage": "http://www.badiu.com.jpeg",  //头像url地址
+                  "description": "不知名明星",             //作者介绍
+                  "socialTitle": "",                      //社会头衔
+                  "sex": 1                                //性别，0-男，1-女
               },
-              "videosList": [ //视频列表
+              "videosList": [                             //视频列表
                   {
                       "id": 39,
-                      "subjectId": 1, //课程id
-                      "videoName": "测试保存视频",  //视频名称
-                      "videoUrl": "保存视频url",  //视频url
-                      "timeLength": "111",  //视频时长
-                      "experience": 0,  //是否为试看视频，0-非是看，1-试看
-                      "sort": 1 //排序
+                      "subjectId": 1,                     //课程id
+                      "videoName": "测试保存视频",         //视频名称
+                      "videoUrl": "保存视频url",           //视频url
+                      "timeLength": "111",                //视频时长
+                      "experience": 0,                    //是否为试看视频，0-非是看，1-试看
+                      "sort": 1                           //排序
                   }
               ],
-              "vo": { //拼团信息
+              "vo": {                                     //拼团信息
                   "id": 3,
-                  "subjectId": 2, //课程id
-                  "shareNum": 3,  //需要拼团人数
-                  "userId": 16, //发起人id
+                  "subjectId": 2,                         //课程id
+                  "shareNum": 3,                          //需要拼团人数
+                  "userId": 16,                           //发起人id
                   "createTime": 1531382721000,
-                  "currentCount": 1 //当前拼团人数
+                  "currentCount": 1                       //当前拼团人数
               }
           }
         ],
@@ -388,7 +335,7 @@ v1.0 2018-07-06
 }
 ----
 
-==== 获取用户拼团详情
+==== 当前课程用户拼团详情
 [cols="3", options="header"]
 |===
 |URL|HTTP请求方式|返回格式
@@ -399,7 +346,6 @@ v1.0 2018-07-06
 [cols="4", options="header"]
 |===
 |参数|类型|必填|说明
-|`userId`|`Integer`|`true`|用户编号
 |`subjectId`|`Integer`|`true`|课程ID
 |===
 ****
@@ -414,16 +360,16 @@ v1.0 2018-07-06
     "ver": 0,
     "data": {
         "id": 3,
-        "subjectId": 2, //课程ID
-        "shareNum": 3,  //需要拼团人数
-        "userId": 16,   //发起人id
+        "subjectId": 2,                                             //课程ID
+        "shareNum": 3,                                              //需要拼团人数
+        "userId": 16,                                               //发起人id
         "createTime": 1531382721000,
-        "joinList": [   //助力人列表
+        "joinList": [                                               //助力人列表
             {
                 "id": 2,
-                "videoSharePublishId": 3,   //拼团id
-                "headImage": "https://img.xxbmm.com/image/1.jpg", //助力人头像url
-                "userId": 1,  //助力人id
+                "videoSharePublishId": 3,                           //拼团id
+                "headImage": "https://img.xxbmm.com/image/1.jpg",   //助力人头像url
+                "userId": 1,                                        //助力人id
                 "createTime": 1531383264000
             }
         ],
@@ -442,7 +388,6 @@ v1.0 2018-07-06
 [cols="4", options="header"]
 |===
 |参数|类型|必填|说明
-|`userId`|`Integer`|`true`|用户编号
 |`subjectId`|`Integer`|`true`|课程ID
 |`shareNum`|`Integer`|`true`|拼团人数
 |===
@@ -469,7 +414,6 @@ v1.0 2018-07-06
 [cols="4", options="header"]
 |===
 |参数|类型|必填|说明
-|`userId`|`Integer`|`true`|用户编号
 |`videoSharePublishId`|`Integer`|`true`|拼团ID
 |===
 ****
@@ -482,5 +426,53 @@ v1.0 2018-07-06
     "code": 0,
     "nowDate": 1530773758000,
     "data": null
+}
+----
+
+=== 收藏接口
+==== 我的收藏
+[cols="3", options="header"]
+|===
+|URL|HTTP请求方式|返回格式
+|`/videos/collectVideosPage`|`GET`|`JSON`
+|===
+.请求参数
+****
+[cols="4", options="header"]
+|===
+|参数|类型|必填|说明
+|`page`|`Integer`|`true`|当前页
+|`pageSize`|`Integer`|`true`|每页数量
+|===
+****
+// WARNING: **//TODO 待定**
+
+.返回参数
+[source,JSON]
+----
+{
+    "success": true,
+    "msg": "成功",
+    "code": 0,
+    "nowDate": 1530773758000,
+    "data": {
+        "list": [
+          {
+              "id": 2,
+              "subjectId": 1,
+              "videoName": "测试保存视频 ",                  //视频名称
+              "videoUrl": "保存视频url",                     //视频url
+              "timeLength": "111",                          //视频长度
+              "createTime": 1530182858000,
+              "experience": 0,                              //是否为试看视频，0-非是看，1-试看
+              "sort": 1                                     //排序
+          }
+        ],
+        "pageNum": 1,
+        "pageSize": 2,
+        "pages": 1,
+        "total": 2,
+        "hasNextPage": false
+    }
 }
 ----
